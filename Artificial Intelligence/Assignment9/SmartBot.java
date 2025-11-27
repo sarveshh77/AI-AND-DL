@@ -17,7 +17,7 @@ public class SmartBot {
                 kb.put(normalize(question), answer.trim());
             }
         } catch (IOException e) {
-            System.out.println("⚠️ Knowledge base not found, starting fresh.");
+            System.out.println("Knowledge base not found, starting fresh.");
         }
         return kb;
     }
@@ -41,7 +41,7 @@ public class SmartBot {
         String filename = "knowledge.txt";
         Map<String, String> kb = loadKB(filename);
 
-        System.out.println("🤖 SmartBot: Hello! I am your assistant. Type 'exit' to quit.");
+        System.out.println("SmartBot: Hello! I am your assistant. Type 'exit' to quit.");
 
         while (true) {
             System.out.print("\nYou: ");
@@ -49,23 +49,23 @@ public class SmartBot {
             String key = normalize(input);
 
             if (key.equals("exit")) {
-                System.out.println("🤖 SmartBot: Goodbye!");
+                System.out.println("SmartBot: Goodbye!");
                 break;
             }
 
             if (kb.containsKey(key)) {
-                System.out.println("🤖 SmartBot: " + kb.get(key));
+                System.out.println("SmartBot: " + kb.get(key));
             } else {
-                System.out.println("🤖 SmartBot: I don't know the answer. Can you teach me? (yes/no)");
+                System.out.println("SmartBot: I don't know the answer. Can you teach me? (yes/no)");
                 String teach = sc.nextLine().trim().toLowerCase();
                 if (teach.equals("yes")) {
                     System.out.println("Please provide the correct answer:");
                     String answer = sc.nextLine().trim();
                     kb.put(key, answer);
                     saveKB(kb, filename);
-                    System.out.println("🤖 SmartBot: Thank you! I will remember this.");
+                    System.out.println("SmartBot: Thank you! I will remember this.");
                 } else {
-                    System.out.println("🤖 SmartBot: Okay, maybe next time.");
+                    System.out.println("SmartBot: Okay, maybe next time.");
                 }
             }
         }
